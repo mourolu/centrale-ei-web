@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
 import { Movie } from '../../components/Movie/Movie';
 import logo from './logo.svg';
 import './Home.css';
@@ -20,6 +18,7 @@ function Home() {
         <input
           value={movieName}
           onChange={(event) => {
+            console.log('Bonjour');
             setMovieName(event.target.value);
           }}
         ></input>
