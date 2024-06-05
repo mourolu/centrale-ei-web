@@ -17,6 +17,7 @@ function App() {
         <Route path="counter" element={<Counter />} />
         <Route path="users" element={<Users />} />
         <Route path="about" element={<About />} />
+		<Route path = 'add-movie' element = {<AddMovie />}></Route>
         <Route path="film/:id" element={<AboutMovie />} />
       </Routes>
     </Layout>
