@@ -4,7 +4,7 @@ import './AddMovieForm.css' ;
 
 DEFAULT_FORM_VALUES = {name : '', dateOfRelease : '', image_url : '', genre_ids : [], adults : false, original_language : ''} ;
 
-export default function add_movie({onSuccessfulUserCreation}) {
+export default function add_movie({onSuccessfulMovieCreation}) {
 	const [formValues, setFormValues] = useState(DEFAULT_FORM_VALUES) ;
 	const [movieCreationSuccess, setMovieCreationSuccess] = useState(null) ;
 	const [movieCreationError, setMovieCreationError] = useState(null) ; 
@@ -22,7 +22,7 @@ export default function add_movie({onSuccessfulUserCreation}) {
 			.then(() => {
 				displayCreationSuccessMessage() ;
 				setFormValues(DEFAULT_FORM_VALUES) ;
-				onSuccessfulUserCreation()
+				onSuccessfulMovieCreation()
 			})
 			.catch((error) => {
 				setMovieCreationError('An error occured while creating new movie') ;
