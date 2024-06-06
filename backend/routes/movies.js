@@ -42,8 +42,6 @@ router.post('/new', function (req, res) {
 		title : req.body.title,
 		release_date: req.body.releaseDate,
 		poster_path : req.body.imageUrl,
-		genre_ids : req.body.genreIdS,
-		adults : req.body.adults,
 		original_language : req.body.originalLanguage,
 		overview : req.body.overview
   	}) ;
