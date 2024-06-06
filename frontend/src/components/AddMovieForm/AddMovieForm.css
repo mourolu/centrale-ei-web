@@ -1,0 +1,21 @@
+.add_movie_form > :not(:last-child) {
+	margin-right: 10px;
+  }
+  
+  .add_movie_input {
+	padding: 5px;
+  }
+  
+  .add_movie_button {
+	cursor: pointer;
+	padding: 5px;
+  }
+  
+  .user_creation_success {
+	color: green;
+  }
+  
+  .user-creation-error {
+	color: red;
+  }
+  
