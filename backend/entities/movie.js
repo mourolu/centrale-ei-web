@@ -17,9 +17,8 @@ const Movie = new typeorm.EntitySchema({
     overview: { type : String },
     poster_path: { type : String },
     popularity: { type: Number },
-    vote_average: { type : Number },
-	adult : { type : Boolean },
-	genre_ids : { type : Boolean }
+    vote_average: { type : Number }
+	// il faut faire en sorte que vote_average et popularity soit générés et initialisés à 0 par défaut
   },
   relations: {
     genres: {
