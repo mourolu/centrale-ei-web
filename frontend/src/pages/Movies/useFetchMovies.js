@@ -9,9 +9,9 @@ export default function useFetchMovies() {
 		setMoviesLoadingError(null) ;
 		axios
 			.get(`${import.meta.env.VITE_BACKEND_URL}/movies`)
-			.then((response) => {setUsers(response.data.users)})
+			.then((response) => {setMovies(response.data.users)})
 			.catch((error) => {
-				setUsersLoadingError('An error occured when fetching movies.')
+				setMoviesLoadingError('An error occured when fetching movies.')
 				console.log(error)
 			}) ;
 	} ;
@@ -19,4 +19,4 @@ export default function useFetchMovies() {
 	useEffect(() => {fetchMovies()}, []) ;
 
 	return {movies, moviesLoadingError, fetchMovies}
-} ;
+}
