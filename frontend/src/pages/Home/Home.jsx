@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Movie } from '../../components/Movie/Movie';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './Home.css';
 import { useFetchMovies } from './useFetchMovies';
 
@@ -15,9 +15,7 @@ function Home() {
     <div class="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div>
-          <strong>Movies</strong>
-        </div>
+        <div></div>
         <br />
         <div class="input-container">
           <input
