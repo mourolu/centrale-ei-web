@@ -59,10 +59,10 @@ export default function addMovie({onSuccessfulMovieCreation}) {
 
 				<p className = 'add_movie_descriptor'>Complete title, date of release, image URL and original language :</p>
 
-				<input className = 'add_movie_input' required type = 'input' placeholder = 'Title' value = {formValues.title} onChange = {(event) => setFormValues({ ...formValues, title : event.target.value})} />
-				<input className = 'add_movie_input' required type = 'date' value = {formValues.dateOfRelease} onChange = {(event) => setFormValues({ ...formValues, dateOfRelease : event.target.value})} />
-				<input className = 'add_movie_input' required type = 'url' placeholder = 'Image URL' value = {formValues.imageUrl} onChange = {(event) => setFormValues({ ...formValues, imageUrl : event.target.value})} />
-				<input className = 'add_movie_input' required type = 'text' placeholder = 'Original language' value = {formValues.originalLanguage} onChange = {(event) => setFormValues({ ...formValues, originalLanguage : event.target.value})} />
+				<input className = 'add_movie_input_rectangle' required type = 'input' placeholder = 'Title' value = {formValues.title} onChange = {(event) => setFormValues({ ...formValues, title : event.target.value})} />
+				<input className = 'add_movie_input_rectangle' required type = 'date' value = {formValues.dateOfRelease} onChange = {(event) => setFormValues({ ...formValues, dateOfRelease : event.target.value})} />
+				<input className = 'add_movie_input_rectangle' required type = 'url' placeholder = 'Image URL' value = {formValues.imageUrl} onChange = {(event) => setFormValues({ ...formValues, imageUrl : event.target.value})} />
+				<input className = 'add_movie_input_rectangle' required type = 'text' placeholder = 'Original language' value = {formValues.originalLanguage} onChange = {(event) => setFormValues({ ...formValues, originalLanguage : event.target.value})} />
 
 				<p className = 'add_movie_descriptor'>Select the genres to which the movie belong to :</p>
 

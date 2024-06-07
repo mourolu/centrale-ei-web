@@ -1,21 +1,57 @@
 .add_movie_form > :not(:last-child) {
-	margin-right: 10px;
-  }
-  
-  .add_movie_input {
-	padding: 5px;
-  }
-  
-  .add_movie_button {
-	cursor: pointer;
-	padding: 5px;
-  }
-  
-  .user_creation_success {
-	color: green;
-  }
-  
-  .user-creation-error {
-	color: red;
-  }
-  
+	margin-right : 10px
+}
+
+.add_movie_input {
+	padding : 5px
+}
+
+.add_movie_button {
+	cursor : pointer ;
+	padding : 7px ;
+	background-color: #007bff ;
+	transition-duration: 0.4s
+}
+.add_movie_button:hover{
+	background-color : cyan ;
+	border : 2px solid #007bff ;
+	padding : 5px ;
+	color : #007bff
+}
+
+.movie_creation_success {
+	color : green
+}
+
+.movie-creation-error {
+	color : red ;
+}
+
+p {
+	color : #007bff
+}
+
+label {
+	color : cyan
+}
+
+.add_movie_input_rectangle {
+	border : 2px solid cyan ;
+	border-radius: 4px ;
+	padding : 5px
+}
+
+.add_movie_input_rectangle:focus{
+	border : 4px solid #ff5733
+}
+
+.add_movie_input_large {
+	border : 2px solid cyan ;
+	border-radius : 4px ;
+	padding : 5px ;
+	width : 90%
+}
+
+.add_movie_input_large:focus{
+	border : 4px solid #ff5733
+}
