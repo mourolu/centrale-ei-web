@@ -17,8 +17,8 @@ export default function addMovie({onSuccessfulMovieCreation}) {
 	const saveMovie = (event) => {
 		event.preventDefault() ;
 		setMovieCreationError(null) ;
-		// setFormValues({...formValues, genreIds : getSelectedGenres(formValues.genreIds)}) ;
-		// console.log(formValues.genreIds) ;
+		setFormValues({...formValues, genreIds : getSelectedGenres(formValues.genreIds)}) ;
+		console.log(formValues.genreIds) ;
 		axios
 			.post(`${import.meta.env.VITE_BACKEND_URL}/movies/new`, formValues)
 			.then(() => {
@@ -32,26 +32,26 @@ export default function addMovie({onSuccessfulMovieCreation}) {
 			}) ;
 	} ;
 
-	// function setGenres(formValues, genreId, value) {
-	// 	const genres = formValues.genreIds ;
-	// 	genres[genreId] = value ;
-	// 	setFormValues({...formValues, genreIds : genres})
-	// } ;
+	function setGenres(formValues, genreId, value) {
+		const genres = formValues.genreIds ;
+		genres[genreId] = value ;
+		setFormValues({...formValues, genreIds : genres})
+	} ;
 
-	// function getSelectedGenres(formValues) {
-	// 	// const [selectedGenres, setSelectedGenres] = useState([]) ;
-	// 	// for (key in genres) {
-	// 	// 	if (genres[key]) {setSelectedGenres((previousGenres) => [...previousGenres, genres[key]])}
-	// 	// } ;
-	// 	// return (selectedGenres)
+	function getSelectedGenres(formValues) {
+		// const [selectedGenres, setSelectedGenres] = useState([]) ;
+		// for (key in genres) {
+		// 	if (genres[key]) {setSelectedGenres((previousGenres) => [...previousGenres, genres[key]])}
+		// } ;
+		// return (selectedGenres)
 
-	// 	const genres = formValues.genres ;
-	// 	let selectedGenres = [] ;
-	// 	for (key in genres) {
-	// 		if (genres[key]) {selectedGenres.push(genres[key])}
-	// 	} ;
-	// 	return (selectedGenres)
-	// } ;
+		const genres = formValues.genres ;
+		let selectedGenres = [] ;
+		for (key in genres) {
+			if (genres[key]) {selectedGenres.push(genres[key])}
+		} ;
+		return (selectedGenres)
+	} ;
 
 	return (
 		<div>
