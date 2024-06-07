@@ -1,8 +1,8 @@
 import express from 'express' ;
 import { appDataSource } from '../datasource.js' ;
 import Movie from '../entities/movie.js' ;
-import Genre from '../entities/genre.js' ;
-import { In } from 'typeorm' ;
+// import Genre from '../entities/genre.js' ;
+// import { In } from 'typeorm' ;
 
 const router = express.Router() ;
 
@@ -38,18 +38,18 @@ router.get('/:id', function (req, res) {
 		});
 }) ;
 
-router.post('/new', async function (req, res) {
-	console.log(req.body.genres)
-	const genres = await appDataSource.getRepository(Genre).find({where : {id : In(req.body.genres)}}) ;
-	console.log(genres)
+router.post('/new', function (req, res) {
+	// console.log(req.body.genres)
+	// const genres = await appDataSource.getRepository(Genre).find({where : {id : In(req.body.genres)}}) ;
+	// console.log(genres)
 	const movieRepository = appDataSource.getRepository(Movie) ;
 	const newMovie = movieRepository.create({
 		title : req.body.title,
-		release_date: req.body.releaseDate,
+		release_date: req.body.dateOfRelease,
 		poster_path : req.body.imageUrl,
 		original_language : req.body.originalLanguage,
 		overview : req.body.overview,
-		genres : genres,
+		// genres : genres,
 		popularity : 0,
 		vote_average : 0
   	}) ;
@@ -59,6 +59,7 @@ router.post('/new', async function (req, res) {
 		.catch(function (error) {
 			console.error(error) ;
 	  		if (error.code === 'SQLITE_CONSTRAINT') {
+				console.log(error)
 				res.status(400).json({message : `Movie with title '${newMovie.title}' already exists.`})
 			}
 			else {
