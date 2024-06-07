@@ -2,7 +2,7 @@ import { useState } from 'react' ;
 import axios from 'axios' ;
 import './AddMovieForm.css' ;
 
-const DEFAULT_FORM_VALUES = {title : '', dateOfRelease : '', imageUrl : '', genreIds : {'12' : false, '14' : false, '16' : false, '18' : false, '27' : false, '28' : false, '35' : false, '36' : false, '37' : false, '53' : false, '80' : false, '99' : false, '878' : false, '9648' : false, '10402' : false, '10749' : false, '10751' : false, '10752' : false, '10770' : false}, adults : false, originalLanguage : '', overview : ''} ;
+const DEFAULT_FORM_VALUES = {title : '', dateOfRelease : '', imageUrl : '', genreIds : {'12' : false, '14' : false, '16' : false, '18' : false, '27' : false, '28' : false, '35' : false, '36' : false, '37' : false, '53' : false, '80' : false, '99' : false, '878' : false, '9648' : false, '10402' : false, '10749' : false, '10751' : false, '10752' : false, '10770' : false}, originalLanguage : '', overview : ''} ;
 
 export default function addMovie({onSuccessfulMovieCreation}) {
 	const [formValues, setFormValues] = useState(DEFAULT_FORM_VALUES) ;
@@ -11,16 +11,16 @@ export default function addMovie({onSuccessfulMovieCreation}) {
 
 	const displayCreationSuccessMessage = () => {
 		setMovieCreationSuccess('New movie added successfully.') ;
-		setTimout(() => {setMovieCreationSuccess(null)}, 3000)
+		setTimeout(() => {setMovieCreationSuccess(null)}, 3000)
 	} ;
 
 	const saveMovie = (event) => {
 		event.preventDefault() ;
 		setMovieCreationError(null) ;
-		setFormValues({...formValues, genreIds : getSelectedGenres(formValues.genreIds)}) ;
-		console.log(formValues.genreIds) ;
+		// setFormValues({...formValues, genreIds : getSelectedGenres(formValues.genreIds)}) ;
+		// console.log(formValues.genreIds) ;
 		axios
-			.post(`${import.meta.env.VITE_BACKEND_URL}/movie/new`, formValues)
+			.post(`${import.meta.env.VITE_BACKEND_URL}/movies/new`, formValues)
 			.then(() => {
 				displayCreationSuccessMessage() ;
 				setFormValues(DEFAULT_FORM_VALUES) ;
@@ -30,22 +30,28 @@ export default function addMovie({onSuccessfulMovieCreation}) {
 				setMovieCreationError('An error occured while creating new movie') ;
 				console.error(error)
 			}) ;
-		console.log(formValues)
 	} ;
 
-	function setGenres(formValues, genreId, value) {
-		const genres = formValues.genreIds ;
-		genres[genreId] = value ;
-		setFormValues({...formValues, genreIds : genres})
-	} ;
+	// function setGenres(formValues, genreId, value) {
+	// 	const genres = formValues.genreIds ;
+	// 	genres[genreId] = value ;
+	// 	setFormValues({...formValues, genreIds : genres})
+	// } ;
 
-	function getSelectedGenres(formValues) {
-		const [selectedGenres, setSelectedGenres] = useState([]) ;
-		const genres = formValues.genres ;
-		for (key in genres) {
-			if (genres[key]) {setSelectedGenres((previousGenres) => [...previousGenres, genres[key]])}
-		}
-	} ;
+	// function getSelectedGenres(formValues) {
+	// 	// const [selectedGenres, setSelectedGenres] = useState([]) ;
+	// 	// for (key in genres) {
+	// 	// 	if (genres[key]) {setSelectedGenres((previousGenres) => [...previousGenres, genres[key]])}
+	// 	// } ;
+	// 	// return (selectedGenres)
+
+	// 	const genres = formValues.genres ;
+	// 	let selectedGenres = [] ;
+	// 	for (key in genres) {
+	// 		if (genres[key]) {selectedGenres.push(genres[key])}
+	// 	} ;
+	// 	return (selectedGenres)
+	// } ;
 
 	return (
 		<div>
@@ -137,13 +143,6 @@ export default function addMovie({onSuccessfulMovieCreation}) {
 						<input className = 'add_movie_input' type = 'checkbox' id = 'tv_movie' value = {formValues.genreIds['10770']} onChange = {(event) => setGenres(formValues, 10770, event.target.checked)} />
 						<label for = 'tv_movie'>TV Movie</label>
 					</div>
-				</div>
-
-				<p className = 'add_movie_descriptor'>Scepcify if the film is intended for adults :</p>
-
-				<div>
-					<input className = 'add_movie_input' type = 'checkbox' id = 'adult' value = {formValues.adults} onChange = {(event) => setFormValues({ ...formValues, adults : event.target.checked})} />
-					<label for = 'adult'>Adult movie</label>
 				</div>
 
 				<p>You can add an overview of the movie :</p>
