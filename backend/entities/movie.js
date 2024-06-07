@@ -7,18 +7,18 @@ const Movie = new typeorm.EntitySchema({
       primary: true,
       type: Number,
       unique: true,
+	  generated : true
     },
     title: {
       type: String,
       unique: false,
     },
-    release_date: { type : String },
-    original_language: { type : String },
-    overview: { type : String },
-    poster_path: { type : String },
-    popularity: { type: Number },
-    vote_average: { type : Number }
-	// il faut faire en sorte que vote_average et popularity soit générés et initialisés à 0 par défaut
+    release_date : {type : String},
+    original_language : {type : String},
+    overview : {type : String},
+    poster_path : {type : String},
+    popularity : {type: Number},
+    vote_average : {type : Number}
   },
   relations: {
     genres: {
