@@ -49,4 +49,13 @@ router.post('/new', async function (req, res) {
   }
 });
 
+router.get('/', function (req, res) {
+  appDataSource
+    .getRepository(Score)
+    .find()
+    .then(function (score) {
+      res.json({ score });
+    });
+});
+
 export default router;

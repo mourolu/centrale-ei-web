@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', function (req, res) {
   appDataSource
     .getRepository(User)
-    .find({})
+    .select('id', 'score', 'movieId')
     .then(function (users) {
       res.json({ users: users });
     });

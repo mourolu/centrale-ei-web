@@ -27,6 +27,18 @@ export function useFetchMovies(
               film.title.toLowerCase().startsWith(movie.toLowerCase())
             );
           });
+          if (sortBy === 'recommended') {
+            films = films.filter((film) => {
+              console.log(
+                film.id,
+                score_movies.data.scoreMovies.map((mov) => mov.movieId)
+              );
+
+              return !score_movies.data.scoreMovies
+                .map((mov) => mov.movieId)
+                .includes(film.id);
+            });
+          }
           console.log(films);
           console.log(movie);
           films = films.filter(
@@ -69,7 +81,9 @@ export function useFetchMovies(
               score1 = score1 ? score1.totalMovieScore : 0;
               score2 = score2 ? score2.totalMovieScore : 0;
 
-              return score2 - score1;
+              return score2 - score1 === 0
+                ? film2.vote_average - film1.vote_average
+                : score2 - score1;
             }
 
             return film1.popularity - film2.popularity;

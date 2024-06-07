@@ -7,7 +7,11 @@ export function Movie({ movie }) {
         <div class="image-container">
           <a href={`film/${movie.id}`}>
             <img
-              src={`https://image.tmdb.org/t/p/w500` + movie.poster_path}
+              src={
+                movie.poster_path.startsWith('http')
+                  ? movie.poster_path
+                  : `https://image.tmdb.org/t/p/w500` + movie.poster_path
+              }
               className="image"
               alt={movie.title}
               class="hover-image"
